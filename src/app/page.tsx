@@ -1,14 +1,14 @@
 "use client";
 
 import { LuAxe } from "react-icons/lu";
-import Logo from "./components/Logo";
+import Logo from "./components/general/Logo";
 import { useRouter } from "next/navigation";
-import Button from "./components/Button";
+import Button from "./components/general/Button";
 const Page = () => {
     const router = useRouter();
 
     const handleClick = () => {
-        router.push("/log");
+        router.push("/signin");
     };
     return (
         <div className="w-full h-screen bg-[#F5F5F5]">
