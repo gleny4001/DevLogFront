@@ -5,7 +5,6 @@ import Todo from "app/components/logs/Todo";
 import BackButton from "app/components/general/BackButton";
 import CurrentDate from "app/components/general/CurrentData";
 import Logs from "app/components/logs/Logs";
-import { div } from "motion/react-client";
 const LogPage = () => {
     const [selected, setSelected] = useState<"logs" | "todo" | "new">("todo");
 

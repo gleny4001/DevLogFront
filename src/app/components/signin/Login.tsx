@@ -27,7 +27,7 @@ const Login = () => {
                     id="email"
                     name="email"
                     required
-                    className="bg-white border border-gray-300 rounded-md p-1 focus-within:outline-1 focus-within:outline-black"
+                    className="bg-white shadow rounded-md p-1 focus-within:outline-1 focus-within:outline-black"
                 />
             </div>
 
@@ -41,7 +41,7 @@ const Login = () => {
                         id="password"
                         name="password"
                         required
-                        className="bg-white border border-gray-300 rounded-md p-1 pr-10 w-full focus-within:outline-1 focus-within:outline-black"
+                        className="bg-white shadow rounded-md p-1 pr-10 w-full focus-within:outline-1 focus-within:outline-black"
                     />
                     <button
                         type="button"

@@ -2,6 +2,7 @@
 import CurrentDate from "app/components/general/CurrentData";
 import Logo from "app/components/general/Logo";
 import { CiCirclePlus } from "react-icons/ci";
+import Link from "next/link";
 
 const ProjectsPage = () => {
     const projects = [
@@ -23,13 +24,16 @@ const ProjectsPage = () => {
             <div className="flex h-full space-y-4 justify-center items-center flex-col">
                 <Logo />
                 <CurrentDate />
-                <div className="flex space-x-8">
-                    <button className="flex flex-col shadow-md items-center justify-center space-y-4 bg-white rounded-xl py-12 px-4 cursor-pointer hover:bg-neutral-100/5">
+                <div className="flex sm:space-x-8 max-sm:flex-col max-sm: items-center max-sm:space-y-4">
+                    <Link
+                        href="/projects/create"
+                        className="flex flex-col shadow-md items-center justify-center space-y-4 bg-white rounded-xl py-12 px-4 cursor-pointer hover:bg-neutral-100/5"
+                    >
                         <CiCirclePlus size={34} />
                         <span className="text-lg font-semibold ">
                             Add New Project
                         </span>
-                    </button>
+                    </Link>
                     {projects.length > 0 && (
                         <div className="flex flex-col space-y-2">
                             <h1 className="text-xl font-bold ">Projects</h1>

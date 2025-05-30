@@ -22,7 +22,7 @@ const Signup: React.FC<SignupProps> = ({ setSelected }) => {
                     id="fullName"
                     name="fullName"
                     required
-                    className="bg-white border border-gray-300 rounded-md p-1 focus-within:outline-1 focus-within:outline-black"
+                    className="bg-white shadow rounded-md p-1 focus-within:outline-1 focus-within:outline-black"
                 />
             </div>
 
@@ -35,7 +35,7 @@ const Signup: React.FC<SignupProps> = ({ setSelected }) => {
                     id="email"
                     name="email"
                     required
-                    className="bg-white border border-gray-300 rounded-md p-1 focus-within:outline-1 focus-within:outline-black"
+                    className="bg-white shadow rounded-md p-1 focus-within:outline-1 focus-within:outline-black"
                 />
             </div>
 
@@ -49,7 +49,7 @@ const Signup: React.FC<SignupProps> = ({ setSelected }) => {
                         id="password"
                         name="password"
                         required
-                        className="bg-white border border-gray-300 rounded-md p-1 pr-10 w-full focus-within:outline-1 focus-within:outline-black"
+                        className="bg-white shadow rounded-md p-1 pr-10 w-full focus-within:outline-1 focus-within:outline-black"
                     />
                     <button
                         type="button"
@@ -78,7 +78,7 @@ const Signup: React.FC<SignupProps> = ({ setSelected }) => {
                         id="confirmPassword"
                         name="confirmPassword"
                         required
-                        className="bg-white border border-gray-300 rounded-md p-1 pr-10 w-full focus-within:outline-1 focus-within:outline-black"
+                        className="bg-white shadow rounded-md p-1 pr-10 w-full focus-within:outline-1 focus-within:outline-black"
                     />
                     <button
                         type="button"
