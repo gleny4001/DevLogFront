@@ -5,21 +5,24 @@ import Logo from "app/components/general/Logo";
 import BackButton from "app/components/general/BackButton";
 import { useRouter } from "next/navigation";
 import { FaPlus } from "react-icons/fa";
-
+import { useApiMutation } from "app/hooks/useApi";
 const ProjectsPage = () => {
     const [title, setTitle] = useState("");
     const router = useRouter();
 
+    const mutation = useApiMutation("post", "/project", {
+        onSuccess: () => {
+            setTitle("");
+            router.push("/projects");
+        },
+        onError: (error) => {
+            console.error("Error creating project:", error);
+        },
+    });
+
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        if (!title.trim()) return;
-        await fetch("http://localhost:3001/api/project", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ name: title }),
-        });
-        setTitle("");
-        router.push("/projects");
+        mutation.mutate({ name: title });
     };
 
     return (

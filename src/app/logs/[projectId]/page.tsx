@@ -5,8 +5,19 @@ import Todo from "app/components/logs/Todo";
 import BackButton from "app/components/general/BackButton";
 import CurrentDate from "app/components/general/CurrentData";
 import Logs from "app/components/logs/Logs";
+import { useParams } from "next/navigation";
+import { useApiQuery } from "app/hooks/useApi";
+import { LogEntry } from "app/types";
+
 const LogPage = () => {
     const [selected, setSelected] = useState<"logs" | "todo" | "new">("todo");
+    const params = useParams();
+
+    const projectId = params.projectId as string;
+    const { data, isLoading } = useApiQuery(
+        ["log", projectId],
+        `/logs/${projectId}`
+    );
 
     return (
         <div className="w-full h-screen bg-[#F5F5F5]">
@@ -26,7 +37,7 @@ const LogPage = () => {
                     />
                 </div>
                 {selected === "logs" ? (
-                    <Logs />
+                    <Logs data={data as LogEntry[]} />
                 ) : selected === "todo" ? (
                     <Todo />
                 ) : null}
