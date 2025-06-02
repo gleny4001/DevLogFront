@@ -1,6 +1,6 @@
 "use client";
-
 import { useState } from "react";
+import LogContainer from "./LogContainer";
 
 const Todo = () => {
     const [todoList, setTodoList] = useState([
@@ -69,51 +69,59 @@ const Todo = () => {
     };
 
     return (
-        <div className="w-[90%] sm:w-xl lg:w-2xl xl:w-4xl p-8 h-fit bg-white rounded-lg shadow-md mx-4">
-            {todoList.map((section, sectionIndex) => (
-                <div key={sectionIndex} className="mb-6">
-                    <input
-                        type="text"
-                        value={section.category}
-                        onChange={(e) =>
-                            handleCategoryChange(sectionIndex, e.target.value)
-                        }
-                        className="font-semibold text-md mb-2 w-full focus:outline-none "
-                    />
-                    <div className="space-y-2 mt-2">
-                        {section.tasks.map((task, taskIndex) => (
-                            <div
-                                key={taskIndex}
-                                className="flex items-center space-x-2 group"
-                            >
-                                <input
-                                    type="checkbox"
-                                    checked={task.completed}
-                                    onChange={() =>
-                                        handleToggle(sectionIndex, taskIndex)
-                                    }
-                                />
-                                <input
-                                    type="text"
-                                    value={task.text}
-                                    onChange={(e) =>
-                                        handleTaskChange(
-                                            sectionIndex,
-                                            taskIndex,
-                                            e.target.value
-                                        )
-                                    }
-                                    className={`w-full bg-transparent transition-colors duration-200 focus:outline-none text-wrap ${
-                                        task.completed
-                                            ? "line-through text-gray-500"
-                                            : ""
-                                    }`}
-                                />
-                            </div>
-                        ))}
+        <div className="flex flex-col items-center justify-center w-full">
+            <LogContainer>
+                {todoList.map((section, sectionIndex) => (
+                    <div key={sectionIndex} className="mb-6">
+                        <input
+                            type="text"
+                            value={section.category}
+                            onChange={(e) =>
+                                handleCategoryChange(
+                                    sectionIndex,
+                                    e.target.value
+                                )
+                            }
+                            className="font-semibold text-md mb-2 w-full focus:outline-none "
+                        />
+                        <div className="space-y-2 mt-2">
+                            {section.tasks.map((task, taskIndex) => (
+                                <div
+                                    key={taskIndex}
+                                    className="flex items-center space-x-2 group"
+                                >
+                                    <input
+                                        type="checkbox"
+                                        checked={task.completed}
+                                        onChange={() =>
+                                            handleToggle(
+                                                sectionIndex,
+                                                taskIndex
+                                            )
+                                        }
+                                    />
+                                    <input
+                                        type="text"
+                                        value={task.text}
+                                        onChange={(e) =>
+                                            handleTaskChange(
+                                                sectionIndex,
+                                                taskIndex,
+                                                e.target.value
+                                            )
+                                        }
+                                        className={`w-full bg-transparent transition-colors duration-200 focus:outline-none text-wrap ${
+                                            task.completed
+                                                ? "line-through text-gray-500"
+                                                : ""
+                                        }`}
+                                    />
+                                </div>
+                            ))}
+                        </div>
                     </div>
-                </div>
-            ))}
+                ))}
+            </LogContainer>
         </div>
     );
 };
