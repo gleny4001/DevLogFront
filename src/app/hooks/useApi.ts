@@ -6,10 +6,25 @@ import {
     UseMutationOptions,
 } from "@tanstack/react-query";
 
+import { auth } from "../firebase/firebase";
+import { getIdToken } from "firebase/auth";
+
 const api = axios.create({
     baseURL: process.env.NEXT_PUBLIC_API_URL || "http://localhost:3001/api",
     withCredentials: true,
 });
+
+api.interceptors.request.use(
+    async (config) => {
+        const user = auth.currentUser;
+        if (user) {
+            const token = await getIdToken(user);
+            config.headers.Authorization = `Bearer ${token}`;
+        }
+        return config;
+    },
+    (error) => Promise.reject(error)
+);
 
 // GET request hook
 export const useApiQuery = <T = unknown>(

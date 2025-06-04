@@ -5,9 +5,15 @@ import { useState } from "react";
 import BackButton from "app/components/general/BackButton";
 import Login from "app/components/signin/Login";
 import SignUp from "app/components/signin/SignUp";
+import { useAuth } from "app/components/context/authContext";
 const SignInPage = () => {
     const [selected, setSelected] = useState<"login" | "signup">("login");
+    const auth = useAuth();
+    const userLoggedIn = auth?.userLoggedIn;
 
+    if (userLoggedIn) {
+        window.location.href = "/projects";
+    }
     return (
         <div className="w-full h-screen bg-[#F5F5F5]">
             <div className="flex h-full space-y-8 justify-center items-center flex-col">

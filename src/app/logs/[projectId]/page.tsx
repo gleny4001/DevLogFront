@@ -14,8 +14,10 @@ const LogPage = () => {
     const rawParams = useParams();
 
     const projectId = useMemo(() => rawParams.projectId as string, [rawParams]);
-    const { data } = useApiQuery(["log", projectId], `/logs/${projectId}`);
-
+    const { data } = useApiQuery<LogEntry[]>(
+        ["log", projectId],
+        `/logs/${projectId}`
+    );
     return (
         <div className="flex flex-col justify-center items-center w-full h-screen space-y-8 bg-[#F5F5F5]">
             {/* Top bar stays in place */}
@@ -24,7 +26,9 @@ const LogPage = () => {
                 <BackButton />
                 <div className="flex justify-between items-center mt-4 max-sm:flex-col max-sm:space-y-2">
                     <div className="flex flex-col">
-                        <h1 className="text-2xl font-bold">ProjectName</h1>
+                        <h1 className="text-2xl font-bold">
+                            {data?.[0]?.project?.name || "Project Logs"}
+                        </h1>
                         <CurrentDate />
                     </div>
                     <LogToggleButton

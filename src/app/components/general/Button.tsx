@@ -17,7 +17,7 @@ const Button = ({
 }: ButtonProps) => {
     return (
         <motion.button
-            whileHover={{ scale: 1.05 }}
+            whileHover={{ scale: 1.01 }}
             whileTap={{ scale: 0.95 }}
             onClick={onClick}
             className={`p-2 ${background} font-bold text-white rounded-xl cursor-pointer ${customStyles}`}

@@ -79,17 +79,13 @@ const NewLog = () => {
     });
 
     const mutation = useApiMutation("post", "/log", {
-        onSuccess: (data) => {
-            console.log("Log created successfully", data);
+        onSuccess: () => {
             setLogValues({
                 "What I did": ["", "", ""],
                 "What’s next": ["", "", ""],
                 "Debug Notes": ["", "", ""],
                 "projectId": "",
             });
-        },
-        onError: (err) => {
-            console.error("Failed to create log", err);
         },
     });
 
