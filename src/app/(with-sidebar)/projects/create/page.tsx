@@ -1,6 +1,5 @@
 "use client";
 import { useState } from "react";
-import CurrentDate from "app/components/general/CurrentData";
 import Logo from "app/components/general/Logo";
 import BackButton from "app/components/general/BackButton";
 import { useRouter } from "next/navigation";
@@ -29,9 +28,14 @@ const ProjectsPage = () => {
         <div className="w-full h-screen bg-[#F5F5F5]">
             <div className="flex w-full h-full space-y-4 justify-center items-center flex-col">
                 <Logo />
-                <CurrentDate />
-                <div className="max-w-md w-[90%]">
-                    <BackButton />
+
+                <div className="max-w-md w-[90%] flex items-center">
+                    <BackButton to="/projects" />
+                    <div className="flex-1 flex justify-center mr-8">
+                        <h1 className="text-xl font-medium text-neutral-400 ">
+                            Create New Project
+                        </h1>
+                    </div>
                 </div>
 
                 <form
@@ -43,7 +47,7 @@ const ProjectsPage = () => {
                         value={title}
                         onChange={(e) => setTitle(e.target.value)}
                         className="bg-white rounded-xl placeholder-neutral-700/40 p-2 pr-12 w-full focus:outline-black"
-                        placeholder="Add Title"
+                        placeholder="Type Project Name"
                     />
                     <button
                         type="submit"

@@ -34,6 +34,7 @@ export const AuthProvider = ({ children }: PropsWithChildren<object>) => {
             router.push("/");
         }
     }, [user, loading, router]);
+
     const initializeUser = (user: User | null) => {
         if (user) {
             setUser(user);

@@ -9,7 +9,7 @@ import { useParams } from "next/navigation";
 import { useApiQuery } from "app/hooks/useApi";
 import { LogEntry } from "app/types";
 import NewLog from "app/components/logs/NewLog";
-const LogPage = () => {
+const ProjectPage = () => {
     const [selected, setSelected] = useState<"logs" | "todo" | "new">("todo");
     const rawParams = useParams();
 
@@ -23,11 +23,11 @@ const LogPage = () => {
             {/* Top bar stays in place */}
 
             <div className="max-w-lg w-full mt-12 sm:mt-24 md:mt-[20vh] lg:mt-[30vh]">
-                <BackButton />
+                <BackButton to={"/projects"} />
                 <div className="flex justify-between items-center mt-4 max-sm:flex-col max-sm:space-y-2">
                     <div className="flex flex-col">
                         <h1 className="text-2xl font-bold">
-                            {data?.[0]?.project?.name || "Project Logs"}
+                            {data?.[0]?.project?.name}
                         </h1>
                         <CurrentDate />
                     </div>
@@ -52,4 +52,4 @@ const LogPage = () => {
     );
 };
 
-export default LogPage;
+export default ProjectPage;

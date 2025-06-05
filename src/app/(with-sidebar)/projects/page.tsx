@@ -6,22 +6,21 @@ import Link from "next/link";
 import { useApiQuery } from "app/hooks/useApi";
 import Loading from "app/components/general/Loading";
 import { useRouter } from "next/navigation";
-import { doSignOut } from "app/firebase/auth";
 const ProjectsPage = () => {
-    type Project = { id: string; name: string }; // Adjust fields as needed
+    type Project = { id: string; name: string };
     const { data, isLoading } = useApiQuery(["projects"], "/projects");
     const projects = (data as Project[]) || [];
     const router = useRouter();
 
     const handleProjectClick = (projectId: string) => {
-        router.push(`/logs/${projectId}`);
+        router.push(`/projects/${projectId}`);
     };
     return (
         <div className="w-full h-screen bg-[#F5F5F5]">
             <div className="flex h-full space-y-4 justify-center items-center flex-col">
                 <Logo />
                 <CurrentDate />
-                <button onClick={doSignOut}>Sign out</button>
+
                 <div className="flex sm:space-x-8 max-sm:flex-col max-sm:items-center max-sm:space-y-4">
                     <Link
                         href="/projects/create"

@@ -1,8 +1,15 @@
 import { IoChevronBack } from "react-icons/io5";
+import { useRouter } from "next/navigation";
 
-const BackButton = () => {
+interface BackButtonProps {
+    to: string;
+}
+
+const BackButton = ({ to }: BackButtonProps) => {
+    const router = useRouter();
+
     const handleBackClick = () => {
-        window.history.back();
+        router.push(to);
     };
     return (
         <button
