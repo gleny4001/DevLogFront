@@ -12,13 +12,13 @@ const SignInPage = () => {
     const userLoggedIn = auth?.userLoggedIn;
 
     if (userLoggedIn) {
-        window.location.href = "/projects";
+        window.location.href = "/project";
     }
     return (
         <div className="w-full h-screen bg-[#F5F5F5]">
             <div className="flex h-full space-y-8 justify-center items-center flex-col">
                 <div className="max-w-md w-full">
-                    <BackButton />
+                    <BackButton to="/" />
                 </div>
 
                 <Logo />

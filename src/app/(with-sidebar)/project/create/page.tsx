@@ -10,9 +10,11 @@ const ProjectsPage = () => {
     const router = useRouter();
 
     const mutation = useApiMutation("post", "/project", {
-        onSuccess: () => {
+        onSuccess: (data) => {
             setTitle("");
-            router.push("/projects");
+            // Assuming the API returns { userId: string }
+            const projectId = (data as { id: string }).id;
+            router.push(`/project/${projectId}`);
         },
         onError: (error) => {
             console.error("Error creating project:", error);
@@ -42,8 +44,12 @@ const ProjectsPage = () => {
                     onSubmit={handleSubmit}
                     className="relative w-[90%] max-w-md"
                 >
+                    <label htmlFor="projectName" className="sr-only">
+                        Project Name
+                    </label>
                     <input
                         type="text"
+                        id="projectName"
                         value={title}
                         onChange={(e) => setTitle(e.target.value)}
                         className="bg-white rounded-xl placeholder-neutral-700/40 p-2 pr-12 w-full focus:outline-black"
@@ -51,10 +57,16 @@ const ProjectsPage = () => {
                     />
                     <button
                         type="submit"
+                        aria-label="Create Project"
                         className="absolute right-2 top-1/2 -translate-y-1/2 bg-gray-400 hover:bg-gray-500 text-white p-2 rounded-lg cursor-pointer"
                     >
                         <FaPlus size={12} />
                     </button>
+                    {mutation.isError && (
+                        <p className="text-red-600 mt-2" role="alert">
+                            Failed to create project. Please try again.
+                        </p>
+                    )}
                 </form>
             </div>
         </div>

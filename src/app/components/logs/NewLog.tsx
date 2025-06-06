@@ -3,6 +3,7 @@ import LogContainer from "./LogContainer";
 import Button from "../general/Button";
 import { useApiMutation } from "../../hooks/useApi";
 import { useParams } from "next/navigation";
+import Loading from "app/components/general/Loading";
 
 type SectionTitle = "What I did" | "What’s next" | "Debug Notes";
 
@@ -40,7 +41,7 @@ const SectionInput = ({ title, values, onChange }: SectionInputProps) => {
 
     return (
         <div className="mb-6">
-            <h2 className="text-2xl font-semibold mb-2">{title}</h2>
+            <h2 className="text-xl font-semibold mb-2">{title}</h2>
             <div className="space-y-1">
                 {values.map((val, idx) => (
                     <div key={idx} className="relative">
@@ -93,10 +94,9 @@ const NewLog = () => {
         e.preventDefault();
 
         mutation.mutate({
-            whatIDid: logValues["What I did"],
-            whatsNext: logValues["What’s next"],
-            bug: logValues["Debug Notes"],
-            score: 10,
+            whatIDid: logValues["What I did"].filter((s) => s.trim() !== ""),
+            whatsNext: logValues["What’s next"].filter((s) => s.trim() !== ""),
+            bug: logValues["Debug Notes"].filter((s) => s.trim() !== ""),
             projectId: logValues.projectId,
         });
     };
@@ -104,7 +104,7 @@ const NewLog = () => {
     return (
         <div className="flex flex-col items-center justify-center w-full">
             <LogContainer>
-                <form className="w-full p-4" onSubmit={handleSubmit}>
+                <form className="w-full" onSubmit={handleSubmit}>
                     <SectionInput
                         title="What I did"
                         values={logValues["What I did"]}
@@ -143,7 +143,7 @@ const NewLog = () => {
                     />
                     <div className="flex justify-end">
                         <Button type="submit">
-                            {mutation.isPending ? "Submitting..." : "Submit"}
+                            {mutation.isPending ? <Loading /> : "Submit"}
                         </Button>
                     </div>
                 </form>

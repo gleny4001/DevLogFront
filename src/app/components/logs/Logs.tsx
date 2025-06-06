@@ -57,21 +57,29 @@ const Logs = ({ data }: LogsProps) => {
             {data.map((log, logIndex) => (
                 <LogContainer key={logIndex}>
                     <div>
-                        <strong>What I did</strong>
+                        {log.whatIDid?.filter(Boolean).length > 0 && (
+                            <strong>What I did</strong>
+                        )}
                         {log.whatIDid?.map((item, index) => (
                             <p key={index} className="text-gray-700">
                                 {item}
                             </p>
                         ))}
 
-                        <strong>What&#39;s next</strong>
+                        {log.whatsNext?.filter(Boolean).length > 0 && (
+                            <strong>What&#39;s next</strong>
+                        )}
+
                         {log.whatsNext?.map((item, index) => (
                             <p key={index} className="text-gray-700">
                                 {item}
                             </p>
                         ))}
 
-                        <strong>Debug notes</strong>
+                        {log.bug?.filter(Boolean).length > 0 && (
+                            <strong>Debug notes</strong>
+                        )}
+
                         {log.bug?.map((item, index) => (
                             <p key={index} className="text-gray-700">
                                 {item}

@@ -12,4 +12,24 @@ export type LogEntry = {
         createdAt: string;
         // Add other fields from the Project model if needed
     };
+    todo?: TodoList;
+};
+
+export type ProjectWithLogs = {
+    id: string;
+    name: string;
+    createdAt: string;
+    log: LogEntry[];
+};
+
+export type Todo = {
+    title: string;
+    todos: string[];
+};
+
+export type TodoList = {
+    createdAt: string;
+    id: string;
+    logId: string;
+    todos: Todo[];
 };

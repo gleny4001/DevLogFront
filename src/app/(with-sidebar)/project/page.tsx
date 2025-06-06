@@ -13,7 +13,7 @@ const ProjectsPage = () => {
     const router = useRouter();
 
     const handleProjectClick = (projectId: string) => {
-        router.push(`/projects/${projectId}`);
+        router.push(`/project/${projectId}`);
     };
     return (
         <div className="w-full h-screen bg-[#F5F5F5]">
@@ -23,7 +23,7 @@ const ProjectsPage = () => {
 
                 <div className="flex sm:space-x-8 max-sm:flex-col max-sm:items-center max-sm:space-y-4">
                     <Link
-                        href="/projects/create"
+                        href="/project/create"
                         className="flex flex-col shadow-md items-center justify-center space-y-4 bg-white rounded-xl py-12 px-4 cursor-pointer hover:bg-neutral-100/5"
                     >
                         <CiCirclePlus size={34} />

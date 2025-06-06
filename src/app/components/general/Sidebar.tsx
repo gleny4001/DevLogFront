@@ -44,6 +44,7 @@ const Sidebar = () => {
                     {isCollapsed && (
                         <motion.button
                             key="hamburger"
+                            aria-label="Open Sidebar"
                             initial={{ opacity: 0 }}
                             animate={{
                                 opacity: 1,
@@ -84,6 +85,7 @@ const Sidebar = () => {
                         {!isCollapsed && (
                             <motion.button
                                 onClick={toggleSidebar}
+                                aria-label="Collapse sidebar"
                                 whileHover={{ scale: 1.1 }}
                                 whileTap={{ scale: 0.95 }}
                                 className="flex-shrink-0 p-1 rounded hover:bg-neutral-500 transition-colors cursor-pointer"
@@ -99,7 +101,7 @@ const Sidebar = () => {
                 {/* Navigation Section */}
                 <nav className="space-y-2  p-4">
                     <Link
-                        href="/projects/create"
+                        href="/project/create"
                         className="block hover:bg-neutral-800 transition-colors duration-200 p-1.5 rounded-lg text-neutral-300 hover:text-white"
                     >
                         <div className="flex items-center">
@@ -138,7 +140,7 @@ const Sidebar = () => {
                         </div>
                     </Link>
                     <Link
-                        href="/projects"
+                        href="/project"
                         className="block hover:bg-neutral-800 transition-colors duration-200 p-1.5 rounded-lg text-neutral-300 hover:text-white "
                     >
                         <div className="flex items-center">
@@ -197,7 +199,7 @@ const Sidebar = () => {
                             {projects.map((project) => (
                                 <Link
                                     key={project.id}
-                                    href={`/projects/${project.id}`}
+                                    href={`/project/${project.id}`}
                                     className="block hover:bg-neutral-800 transition-colors duration-200 p-1.5 rounded-lg text-neutral-300 hover:text-white"
                                 >
                                     <div className="flex items-center">
